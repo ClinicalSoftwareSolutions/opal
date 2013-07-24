@@ -1,4 +1,4 @@
-var directives = angular.module('opal.directives', []);
+var directives = angular.module('opal.directives', ['ngSanitize']);
 
 directives.directive("freezePanes", function () {
     return function (scope, element, attrs) {
@@ -45,6 +45,22 @@ directives.directive('placeholder', function($timeout){
 					}
 				});
 			});
+		}
+	}
+});
+
+directives.directive('linebreakstolistitems', function($interpolate, $sanitize) {
+	return {
+		link: function(scope, element, attrs) {
+			var uContent = $interpolate(element.text())(scope);
+			var sContent = '';
+			var lines = uContent.split('\n');
+
+			for (i = 0; i < lines.length; i++) {
+				sContent += '<li>' + $sanitize(lines[i]) + '</li>';
+			}
+
+			element.html(sContent);
 		}
 	}
 });
