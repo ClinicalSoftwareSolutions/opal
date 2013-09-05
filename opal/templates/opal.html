@@ -50,15 +50,20 @@
 				</span>
 
 				<ul class="nav pull-right">
+                    <li>
+                      <a href="/#/query">
+                        Query
+                      </a>
+                    </li>
 					<li>
-                                          <a href="/#/account">
-                                          {% if request.user.first_name %}
-                                            {{ request.user.first_name }}
-                                          {% else %}
-                                            {{ request.user.username }}
-                                          {% endif %}
-                                          </a>
-                                        </li>
+                      <a href="/#/account">
+                        {% if request.user.first_name %}
+                          {{ request.user.first_name }}
+                        {% else %}
+                          {{ request.user.username }}
+                          {% endif %}
+                          </a>
+                    </li>
 					<li><a href="#">Home</a></li>
                                         {% if request.user.is_staff %}
 					  <li><a href="/admin">Admin</a></li>

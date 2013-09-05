@@ -5,7 +5,8 @@ from patients import views
 
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     url(r'^$', views.IndexView.as_view()),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^contact/$', views.ContactView.as_view()),
@@ -15,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^admin/?', include(admin.site.urls)),
     url(r'^patient/?', include('patients.urls.records')),
     url(r'^templates/', include('patients.urls.templates')),
+    url(r'^query/', include('query.urls')),
 )
 
 urlpatterns += staticfiles_urlpatterns()
